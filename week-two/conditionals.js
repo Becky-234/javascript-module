@@ -141,3 +141,15 @@ continue
 //DOM 
 
 
+//Tenary Operator: Is 
+// condition
+// ? valueIfTrue
+// : valueIfFlase;
+
+let stock = 5;
+ let message = stock>0 ? "In stock" : "Out of stock";
+ console.log(message);
+
+
+
+
