@@ -136,6 +136,27 @@ continue
 //     window.alert("Please check again");        
 // }
 
+ let salesStatus = prompt("Enter today's Sale comment Here"); // This could come from user input or calculations
+
+switch (salesStatus) {
+    case "excellent":
+        window.alert("You exceeded your sales target!");
+        break;
+    case "good":
+        window.alert("You met your sales target.");
+        break;
+    case "average":
+        window.alert("You are close to the target. Keep pushing!");
+        break;
+    case "poor":
+        window.alert("Sales are low. Consider promotions.");
+        break;
+    default:
+        window.alert("Invalid sales status.");
+};
+
+
+
 //Assignment
 //(Read about);
 //DOM 
@@ -146,9 +167,10 @@ continue
 // ? valueIfTrue
 // : valueIfFlase;
 
-let stock = 5;
- let message = stock>0 ? "In stock" : "Out of stock";
- console.log(message);
+// let stock = 5;
+//  let message = stock>0 ? "In stock" : "Out of stock";
+//  console.log(message);
+
 
 
 
