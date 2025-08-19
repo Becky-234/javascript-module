@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Charts</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
 
 </head>
 
@@ -57,10 +58,10 @@
         });
     </script>  -->
 
-<!-- <h2>My Pie Chart Example</h2>
+<h2>My Pie Chart Example</h2>
     <canvas id="myPieChart" width="200" height="200"></canvas>
     
-    <script>
+     <!-- <script> 
         const ctx = document.getElementById('myPieChart').getContext('2d');
         const myPieChart = new Chart(ctx, {
             type: 'pie', // Pie chart type
@@ -101,13 +102,13 @@
                 }
             }
         });
-    </script>
- -->
-<canvas id="myChart" width="400" height="200"></canvas>
+    </script> -->
 
-<script>
+<canvas id="myChart" width="400" height="100"></canvas>
+ <script> 
     const ctx = document.getElementById('myChart').getContext('2d');
-    const myChart = new Chart(ctx, {
+
+    new Chart(ctx, {
         type: 'bar',
         data: {
             labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
@@ -118,9 +119,80 @@
                 borderColor: 'rgba(54, 162, 235, 1)',
                 borderWidth: 1
             }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {            // No more "yAxes" array
+                    beginAtZero: true
+                }
+            }
         }
     });
 </script>
 
+<!-- D3.js bar chart -->
+<h2 style="text-align: center;">My First D3.js Bar Chart</h2>
+<svg width="500" height="300"></svg>
+
+<script>
+    const labels = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'];
+    const data = [12, 19, 3, 5, 2, 3];
+
+    const svg = d3.select("svg");
+    const margin = { top: 20, right: 30, bottom: 40, left: 40 };
+    const width = +svg.attr("width") - margin.left - margin.right;
+    const height = +svg.attr("height") - margin.top - margin.bottom;
+
+    const chart = svg.append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
+
+    // X Scale
+    const x = d3.scaleBand()
+        .domain(labels)
+        .range([0, width])
+        .padding(0.2);
+
+    // Y Scale
+    const y = d3.scaleLinear()
+        .domain([0, d3.max(data)])
+        .range([height, 0]);
+
+    // Bars
+    chart.selectAll(".bar")
+        .data(data)
+        .enter()
+        .append("rect")
+        .attr("class", "bar")
+        .attr("x", (d, i) => x(labels[i]))
+        .attr("y", d => y(d))
+        .attr("width", x.bandwidth())
+        .attr("height", d => height - y(d));
+
+    // X-axis
+    chart.append("g")
+        .attr("transform", `translate(0,${height})`)
+        .call(d3.axisBottom(x));
+
+    // Y-axis
+    chart.append("g")
+        .call(d3.axisLeft(y));
+
+    // Axis labels
+    svg.append("text")
+        .attr("x", width / 2 + margin.left)
+        .attr("y", height + margin.top + 35)
+        .attr("text-anchor", "middle")
+        .text("Colors");
+
+    svg.append("text")
+        .attr("x", -(height / 2) - margin.top)
+        .attr("y", 15)
+        .attr("transform", "rotate(-90)")
+        .attr("text-anchor", "middle")
+        .text("# of Votes");
+</script>
+
 </body>
+
 </html>
