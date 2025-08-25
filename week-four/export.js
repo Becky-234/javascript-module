@@ -1,12 +1,17 @@
 // //Syntax for require
 // const moduleName = require('./path/to/module');
 
-//in this file, export.js, we add this content:
-const add = (a, b) => {
-  return a + b;
-};
 
-module.exports = add;
+// //in this file, export.js, we add this content:
+// module.exports = [
+//   { product: 'Bed', quantity: 10, price: 1000 },
+//   { product: 'Table', quantity: 20, price: 500 },
+//   { product: 'Chair', quantity: 15, price: 300 }
+// ];
+// module.exports = add;
+
+
+
 
 // //Syntax for import
 //  import moduleName from './path/to/module'; // Default export
