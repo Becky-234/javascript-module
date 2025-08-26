@@ -41,7 +41,7 @@ setTimeout(function(){
 const showAgent = (agentName) => {
   console.log("Sales Agent:",agentName);
 };
-showAgent("Joseline");
+showAgent("Becky");
 
 //5.Function without Parameters and Return
 //logs report message:

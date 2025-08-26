@@ -23,3 +23,5 @@ price.addEventListener("input", updateTotal);
 placeOrder.addEventListener ("mouseover", finishOrder);
 
 
+
+
